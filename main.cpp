@@ -1,62 +1,124 @@
 #include <iostream>
 using namespace std;
 
-class Mascotas {
+/*
+-----------------------------------------
+Clase: Mascota
+Descripción:
+Representa una mascota con varios atributos
+y métodos para mostrar y modificar su estado.
+-----------------------------------------
+*/
+
+class Mascota {
+
 private:
-    int Id_Mascotas; // atributos
+    int felicidad; // Atributo privado (encapsulado)
 
 public:
-    string Nombre; // atributos
-    string Color; // atributos
-    string Raza; // atributos
-    float Peso; // atributos
-    int Edad; // Atributos
 
+    // Atributos públicos
+    string nombre;
+    string color;
+    string raza;
+    int edad;
 
-    void saltar() { //Metodo
-        cout << Nombre << " Salta";
+    /*
+    -----------------------------------------
+    Metodo: setFelicidad
+    Descripción:
+    Modifica el nivel de felicidad de la mascota.
+    Recibe un valor y lo suma al nivel actual.
+    -----------------------------------------
+    */
+    void setFelicidad(int aumento) {
+        felicidad = felicidad + aumento;
+        cout << nombre << " ahora tiene un nivel de felicidad de: "
+             << felicidad << endl;
+    }
+
+    /*
+    -----------------------------------------
+    Metodo: getFelicidad
+    Descripción:
+    Permite obtener el valor del atributo
+    privado felicidad.
+    -----------------------------------------
+    */
+    int getFelicidad() {
+        return felicidad;
+    }
+
+    /*
+    -----------------------------------------
+    Metodo: MostrarDatos
+    Descripción:
+    Muestra todos los datos de la mascota.
+    -----------------------------------------
+    */
+    void MostrarDatos() {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Color: " << color << endl;
+        cout << "Raza: " << raza << endl;
+        cout << "Edad: " << edad << endl;
+        cout << "Nivel de felicidad: " << felicidad << endl;
+        cout << "--------------------------" << endl;
+    }
+
+    /*
+    -----------------------------------------
+    Metodo: InicializarFelicidad
+    Descripción:
+    Permite darle un valor inicial a la
+    felicidad de la mascota.
+    -----------------------------------------
+    */
+    void InicializarFelicidad(int valor) {
+        felicidad = valor;
     }
 };
-class Mascotas_Perros : public Mascotas {
-public:
-    void ladrar() {
-   cout << Nombre << "el perro esta ladrando";
-    }
-};
-class Mascotas_Gatos : public Mascotas {
-public:
-    void ladrar() {
-        cout << Nombre << "el perro esta ladrando";
-    }
-};
-int main () {
-    Mascotas mascotas1;
-    mascotas1.Nombre = "Rudolf";
-    cout << mascotas1.Nombre << endl;
-    mascotas1.Color = "azul";
-    cout << mascotas1.Color << endl;
-    mascotas1.Edad = 10;
-    cout << mascotas1.Edad << endl;
-    mascotas1.Peso = 7.5;
-    cout << mascotas1.Peso << endl;
-    mascotas1.Raza = "shitzu";
-    cout << mascotas1.Raza << endl;
-    mascotas1.saltar();
 
-    cout << endl << endl;
+int main() {
 
-    Mascotas_Perros mascotas2;
-    mascotas2.Nombre = "rufo";
-    cout << mascotas2.Nombre << endl;
-    mascotas2.Color = "verde";
-    cout << mascotas2.Color << endl;
-    mascotas2.Edad = 5;
-    cout << mascotas2.Edad << endl;
-    mascotas2.Peso = 8.5;
-    cout << mascotas2.Peso << endl;
-    mascotas2.Raza = "galez";
-    cout << mascotas2.Raza << endl;
-    mascotas2.ladrar();
+    // Creación de dos objetos de la clase Mascota
+    Mascota mascota1;
+    Mascota mascota2;
 
+    // Asignación de valores al primer objeto
+    mascota1.nombre = "Firulais";
+    mascota1.color = "Cafe";
+    mascota1.raza = "Labrador";
+    mascota1.edad = 5;
+    mascota1.InicializarFelicidad(50);
 
+    // Asignación de valores al segundo objeto
+    mascota2.nombre = "Michi";
+    mascota2.color = "Blanco";
+    mascota2.raza = "Siames";
+    mascota2.edad = 3;
+    mascota2.InicializarFelicidad(40);
+
+    cout << "DATOS INICIALES" << endl;
+    cout << "================" << endl;
+
+    // Mostrar datos iniciales
+    mascota1.MostrarDatos();
+    mascota2.MostrarDatos();
+
+    cout << endl;
+    cout << "MODIFICANDO FELICIDAD..." << endl;
+
+    // Modificar un atributo usando un metodo
+    mascota1.setFelicidad(10);
+    mascota2.setFelicidad(15);
+
+    cout << endl;
+    cout << "DATOS ACTUALIZADOS" << endl;
+    cout << "==================" << endl;
+
+    // Mostrar datos nuevamente
+    mascota1.MostrarDatos();
+    mascota2.MostrarDatos();
+
+    return 0;
 }
